@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Trytune from './trytune.js'
+import Sound from './sound.js'
 
 class Options extends Component {
   constructor(props) {
@@ -30,13 +30,13 @@ class Options extends Component {
   }
 
   componentDidMount() {
-    this.setState({audio: Trytune.getAudio})
+    this.setState({audio: Sound.getAudio})
   }
 
   changePlayTime(e) {
     let opts = this.state
     opts.playtime = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       playtime: e.target.value,
       audio: audio
@@ -46,7 +46,7 @@ class Options extends Component {
   changeFundamental(e) {
     let opts = this.state
     opts.fundamental = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       fundamental: e.target.value,
       audio: audio
@@ -56,7 +56,7 @@ class Options extends Component {
   changeShape(e) {
     let opts = this.state
     opts.shape = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       shape: e.target.value,
       audio: audio
@@ -66,7 +66,7 @@ class Options extends Component {
   changeRoot(e) {
     let opts = this.state
     opts.root = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       root: e.target.value,
       audio: audio
@@ -76,7 +76,7 @@ class Options extends Component {
   changeRootBNS(e) {
     let opts = this.state
     opts.rootBNS = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       rootBNS: e.target.value,
       audio: audio
@@ -86,7 +86,7 @@ class Options extends Component {
   changeTriad(e) {
     let opts = this.state
     opts.triad = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       triad: e.target.value,
       audio: audio
@@ -96,7 +96,7 @@ class Options extends Component {
   changeSeventh(e) {
     let opts = this.state
     opts.seventh = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       seventh: e.target.value,
       audio: audio
@@ -106,7 +106,7 @@ class Options extends Component {
   changeNinth(e) {
     let opts = this.state
     opts.ninth = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       ninth: e.target.value,
       audio: audio
@@ -116,7 +116,7 @@ class Options extends Component {
   changeEleventh(e) {
     let opts = this.state
     opts.eleventh = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       eleventh: e.target.value,
       audio: audio
@@ -126,7 +126,7 @@ class Options extends Component {
   changeThirteenth(e) {
     let opts = this.state
     opts.thirteenth = e.target.value
-    let audio = Trytune.getAudio(opts)
+    let audio = Sound.getAudio(opts)
     this.setState({
       thirteenth: e.target.value,
       audio: audio
@@ -188,7 +188,7 @@ class Options extends Component {
         <br/>
         <div onClick={() => console.log(this.state)}>Log State</div>
         <br/>
-        <button onClick={() => Trytune.play(this.state.audio, this.state.playtime, this.state.shape)}>Play</button>
+        <button onClick={() => Sound.play(this.state.audio, this.state.playtime, this.state.shape)}>Play</button>
       </div>
     )
   }

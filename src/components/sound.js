@@ -183,9 +183,9 @@ function play(audio, playtime, shape) {
   source.start()
 }
 
-const Trytune = {
+const Sound = {
   getAudio,
   play
 }
 
-export default Trytune;
+export default Sound;
