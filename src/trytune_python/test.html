@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script src='trytune.js'></script>
+  </head>
+  <body>
+    <h1 onclick='play()'>
+      hello
+    </h1>
+  </body>
+  <script>
+  	function play() {
+      chord = harmony([440, 440*4/3, 440*3/2])
+      console.log(chord)
+      const audioCtx = new AudioContext()
+      let buffer = audioCtx.createBuffer(1, 2 * audioCtx.sampleRate, audioCtx.sampleRate)
+      let bufferSet = buffer.getChannelData(0)
+      for (let i = 0; i < 2 * audioCtx.sampleRate; i++) {
+        bufferSet[i] = chord[i] / 32
+      }
+      let source = audioCtx.createBufferSource()
+      source.buffer = buffer
+      source.connect(audioCtx.destination)
+      source.start()
+    }
+
+  </script>
+</html>
