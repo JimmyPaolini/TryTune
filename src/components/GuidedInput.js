@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Options from './Options.js';
-import Sound from './sound.js';
+import Sound from '../sound.js';
 
 class GuidedInput extends Component {
   constructor(props) {
