@@ -21,7 +21,7 @@ def cents1200(x,y=1):
         return [cents1200(tup) for tup in x]
     else: return 1200 * math.log(norm(x/y),2)
 
-# returns the decimal ratio 1 <= x <= 2 of the input floa
+# returns the decimal ratio 1 <= x <= 2 of the input float
 def ratio(x):
     if type(x) is tuple: return ratio(x[0]*100 + x[1])
     elif type(x) is float: return 2**(float(x)/1200)
