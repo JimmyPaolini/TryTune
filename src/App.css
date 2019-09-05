@@ -1,1 +1,80 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
 
+.content > *, .instructions {
+  display: block;
+  text-align: center;
+  margin: 10px;
+}
+
+.content button {
+  padding: 5px;
+}
+
+textarea {
+  height: 100px;
+  width: 300px;
+}
+
+button.play {
+  padding: 5px 9px 5px 11px;
+}
+
+div.instructions {
+  width: 300px;
+  margin: auto;
+}
+
+nav {
+  background-color: #333;
+}
+
+ul {
+  list-style-type: none;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown-content a:hover {
+  background-color: #222;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 146px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  background-color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

@@ -4,7 +4,7 @@ let Options = {
   PlayTime: function(props) {
     return (
       <div>
-      Play Time (s):
+      <span>Play Time (s): </span>
       <input type="text" name="PlayTime"
       defaultValue={props.value} onChange={props.change}/>
       </div>
@@ -14,7 +14,7 @@ let Options = {
   Fundamental: function(props) {
     return (
       <div>
-      Fundamental (Hz):
+      <span>Fundamental (Hz): </span>
       <input type="text" name="Fundamental"
       defaultValue={props.value} onChange={props.change}/>
       </div>
@@ -24,11 +24,10 @@ let Options = {
   System: function(props) {
     return (
       <div>
-      System:
+      <span>System: </span>
       <select defaultValue={props.value} onChange={props.change}>
         <option value='tet12'>12-Tone Equal Temperment</option>
-        <option value='just'>Just Intonation</option>
-        <option value='pythag'>Pythagorean (3-Limit)</option>
+        <option value='pythag'>Pythagorean / 3-Limit</option>
         <option value='lim5'>5-Limit</option>
         <option value='lim7'>7-Limit</option>
         <option value='mt_1/4'>1/4-Comma Meantone</option>
@@ -43,7 +42,7 @@ let Options = {
   Shape: function(props) {
     return (
       <div>
-      Shape:
+      <span>Shape: </span>
       <select defaultValue={props.value} onChange={props.change}>
         <option value='sine'>sine</option>
         <option value='triangle'>triangle</option>
@@ -57,7 +56,7 @@ let Options = {
   Root: function(props) {
     return (
       <div>
-      Root:
+      <span>Root: </span>
       <select defaultValue={props.value} onChange={props.change}>
         <option value='0'>I</option>
         <option value='2'>II</option>
@@ -74,18 +73,18 @@ let Options = {
   RootBNS: function(props) {
     return (
       <div>
-        BNS:
-        <label>b
+        <span>Root Accidental: </span>
+        <label>   &#x266d;
           <input type="radio" value='-1'
           checked={props.value === '-1'}
           onChange={props.change}/>
         </label>
-        <label>n
+        <label>   &#x266e;
           <input type="radio" value='0'
           checked={props.value === '0'}
           onChange={props.change}/>
         </label>
-        <label>s
+        <label>   &#x266f;
           <input type="radio" value='1'
           checked={props.value === '1'}
           onChange={props.change}/>
@@ -97,7 +96,7 @@ let Options = {
   Triad: function(props) {
     return (
       <div>
-        Triad:
+        <span>Triad: </span>
         <select defaultValue={props.value} onChange={props.change}>
           <option value='[4,7]'>Major</option>
           <option value='[3,7]'>Minor</option>
@@ -114,23 +113,23 @@ let Options = {
   Seventh: function(props) {
     return (
       <div>
-        Seventh:
-        <label>none
+        <span>Seventh: </span>
+        <label>   none
           <input type='radio' value='none'
           checked={props.value === 'none'}
           onChange={props.change}/>
         </label>
-        <label>dim
+        <label>   dim
           <input type='radio' value='9'
           checked={props.value === '9'}
           onChange={props.change}/>
         </label>
-        <label>min
+        <label>   min
           <input type='radio' value='10'
           checked={props.value === '10'}
           onChange={props.change}/>
         </label>
-        <label>maj
+        <label>   maj
           <input type='radio' value='11'
           checked={props.value === '11'}
           onChange={props.change}/>
@@ -142,23 +141,23 @@ let Options = {
   Ninth: function(props) {
     return (
       <div>
-        Ninth:
-        <label>none
+        <span>Ninth: </span>
+        <label>   none
           <input type='radio' value='none'
           checked={props.value === 'none'}
           onChange={props.change}/>
         </label>
-        <label>b
+        <label>   &#x266d;
           <input type='radio' value='1'
           checked={props.value === '1'}
           onChange={props.change}/>
         </label>
-        <label>n
+        <label>   &#x266e;
           <input type='radio' value='2'
           checked={props.value === '2'}
           onChange={props.change}/>
         </label>
-        <label>s
+        <label>   &#x266f;
           <input type='radio' value='3'
           checked={props.value === '3'}
           onChange={props.change}/>
@@ -171,17 +170,17 @@ let Options = {
     return (
       <div>
         Eleventh:
-        <label>none
+        <label>   none
           <input type='radio' value='none'
           checked={props.value === 'none'}
           onChange={props.change}/>
         </label>
-        <label>n
+        <label>   &#x266e;
           <input type='radio' value='5'
           checked={props.value === '5'}
           onChange={props.change}/>
         </label>
-        <label>s
+        <label>   &#x266f;
           <input type='radio' value='6'
           checked={props.value === '6'}
           onChange={props.change}/>
@@ -194,22 +193,22 @@ let Options = {
     return (
       <div>
         Thirteenth:
-        <label>none
+        <label>   none
           <input type='radio' value='none'
           checked={props.value === 'none'}
           onChange={props.change}/>
         </label>
-        <label>b
+        <label>   &#x266d;
           <input type='radio' value='8'
           checked={props.value === '8'}
           onChange={props.change}/>
         </label>
-        <label>n
+        <label>   &#x266e;
           <input type='radio' value='9'
           checked={props.value === '9'}
           onChange={props.change}/>
         </label>
-        <label>s
+        <label>   &#x266f;
           <input type='radio' value='10'
           checked={props.value === '10'}
           onChange={props.change}/>
