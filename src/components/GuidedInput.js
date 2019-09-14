@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Options from './Options.js';
 import Sound from '../sound.js';
 
-class GuidedInput extends Component {
+export default class GuidedInput extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -26,7 +26,7 @@ class GuidedInput extends Component {
     this.audio = Sound.getAudio(this.state)
     this.chordName = Sound.getChordName(this.state)
     return (
-      <div className='content' id='GuidedInput'>
+      <div className='flex-container' id='GuidedInput'>
 
         <Options.PlayTime
         value={this.state.playtime}
@@ -69,13 +69,15 @@ class GuidedInput extends Component {
         value={this.state.thirteenth}
         change={(e) => this.setState({thirteenth: e.target.value})}/>
 
-        <div>Chord Name: {this.chordName}</div>
+        <div>
+          Chord Name: {this.chordName}
+        </div>
 
-        <div><button className='play' onClick={() => Sound.play(this.audio, this.state.playtime, this.state.shape)}>&#9658;</button></div>
+        <div>
+          <button className='play' onClick={() => Sound.play(this.audio, this.state.playtime, this.state.shape)}>&#9658;</button>
+        </div>
 
       </div>
     )
   }
 }
-
-export default GuidedInput;

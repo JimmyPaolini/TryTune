@@ -5,10 +5,10 @@ function Nav(props) {
     <nav>
       <ul>
         <li><a href='/'>Trytune</a></li>
-        <li><a href='/freeinput'>Free Input</a></li>
         <li><a href='/guidedinput'>Guided Input</a></li>
+        <li><a href='/freeinput'>Free Input</a></li>
         <li className='dropdown'>
-        <a href='/tuningsystems' className='dropbtn'>Tuning Systems</a>
+        <a className='dropbtn'>Tuning Systems</a>
           <div className='dropdown-content'>
             <a href='/tuningsystems/just'>Just</a>
             <a href='/tuningsystems/limit'>Limit</a>

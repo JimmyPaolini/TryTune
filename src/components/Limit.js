@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Dev(props) {
+export default function Limit(props) {
   return (
     <div className='flex-container'>
-      <div className='instructions'>
+      <div className='grid-container'>
         In Development...
       </div>
     </div>

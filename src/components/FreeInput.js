@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Options from './Options.js'
 import Sound from '../sound.js';
 
-class FreeInput extends Component {
+export default class FreeInput extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -17,7 +17,7 @@ class FreeInput extends Component {
   render() {
     this.audio = Sound.getAudioFromTextin(this.state)
     return (
-      <div className='content' id='FreeInput'>
+      <div className='flex-container' id='FreeInput'>
         <Options.PlayTime
         value={this.state.playtime}
         change={(e) => this.setState({playtime: e.target.value})}/>
@@ -30,11 +30,10 @@ class FreeInput extends Component {
         value={this.state.shape}
         change={(e) => this.setState({shape: e.target.value})}/>
 
-        <div className='instructions'>
-          Add intervals relative to the fundamental by typing ratios (containing a '/') and/or cents (containing a '.') separated by commas below:
-        </div>
-
         <div>
+          <p className='instructions'>
+            Add intervals relative to the fundamental by typing ratios (containing a '/') and/or cents (containing a '.') separated by commas below:
+          </p>
           <textarea
             defaultValue={this.state.value}
             onChange={(e) => this.setState({value: e.target.value})} >
@@ -48,5 +47,3 @@ class FreeInput extends Component {
     )
   }
 }
-
-export default FreeInput;
