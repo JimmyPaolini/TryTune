@@ -24,7 +24,7 @@ let Options = {
   System: function(props) {
     return (
       <div>
-      <span>System: </span>
+      <span>Tuning System: </span>
       <select defaultValue={props.value} onChange={props.change}>
         <option value='tet12'>12-Tone Equal Temperment</option>
         <option value='pythag'>Pythagorean / 3-Limit</option>
@@ -66,29 +66,21 @@ let Options = {
         <option value='9'>VI</option>
         <option value='11'>VII</option>
       </select>
-      </div>
-    )
-  },
-
-  RootBNS: function(props) {
-    return (
-      <div>
-        <span>Root Accidental: </span>
-        <label>   &#x266d;
-          <input type="radio" value='-1'
-          checked={props.value === '-1'}
-          onChange={props.change}/>
-        </label>
-        <label>   &#x266e;
-          <input type="radio" value='0'
-          checked={props.value === '0'}
-          onChange={props.change}/>
-        </label>
-        <label>   &#x266f;
-          <input type="radio" value='1'
-          checked={props.value === '1'}
-          onChange={props.change}/>
-        </label>
+      <label>   &#x266d;
+        <input type="radio" value='-1'
+        checked={props.valueBNS === '-1'}
+        onChange={props.changeBNS}/>
+      </label>
+      <label>   &#x266e;
+        <input type="radio" value='0'
+        checked={props.valueBNS === '0'}
+        onChange={props.changeBNS}/>
+      </label>
+      <label>   &#x266f;
+        <input type="radio" value='1'
+        checked={props.valueBNS === '1'}
+        onChange={props.changeBNS}/>
+      </label>
       </div>
     )
   },
@@ -148,18 +140,18 @@ let Options = {
           onChange={props.change}/>
         </label>
         <label>   &#x266d;
-          <input type='radio' value='1'
-          checked={props.value === '1'}
+          <input type='radio' value='13'
+          checked={props.value === '13'}
           onChange={props.change}/>
         </label>
         <label>   &#x266e;
-          <input type='radio' value='2'
-          checked={props.value === '2'}
+          <input type='radio' value='14'
+          checked={props.value === '14'}
           onChange={props.change}/>
         </label>
         <label>   &#x266f;
-          <input type='radio' value='3'
-          checked={props.value === '3'}
+          <input type='radio' value='15'
+          checked={props.value === '15'}
           onChange={props.change}/>
         </label>
       </div>
@@ -176,13 +168,13 @@ let Options = {
           onChange={props.change}/>
         </label>
         <label>   &#x266e;
-          <input type='radio' value='5'
-          checked={props.value === '5'}
+          <input type='radio' value='17'
+          checked={props.value === '17'}
           onChange={props.change}/>
         </label>
         <label>   &#x266f;
-          <input type='radio' value='6'
-          checked={props.value === '6'}
+          <input type='radio' value='18'
+          checked={props.value === '18'}
           onChange={props.change}/>
         </label>
       </div>
@@ -199,18 +191,13 @@ let Options = {
           onChange={props.change}/>
         </label>
         <label>   &#x266d;
-          <input type='radio' value='8'
-          checked={props.value === '8'}
+          <input type='radio' value='20'
+          checked={props.value === '20'}
           onChange={props.change}/>
         </label>
         <label>   &#x266e;
-          <input type='radio' value='9'
-          checked={props.value === '9'}
-          onChange={props.change}/>
-        </label>
-        <label>   &#x266f;
-          <input type='radio' value='10'
-          checked={props.value === '10'}
+          <input type='radio' value='21'
+          checked={props.value === '21'}
           onChange={props.change}/>
         </label>
       </div>

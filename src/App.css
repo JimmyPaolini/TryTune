@@ -4,6 +4,11 @@
   font-family: sans-serif;
 }
 
+textarea {
+  margin: 5px;
+  font-size: 18px;
+}
+
 .content > *, .instructions {
   display: block;
   text-align: center;

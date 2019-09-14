@@ -44,68 +44,6 @@ function decimal(x) {
   return Math.pow(2, x / 1200);
 }
 
-const tunings = {
-  'tet12': new Array(12).fill(1).map((elt,i) => Math.pow(2,i/12)),
-  'just': [1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2, 8/5, 5/3, 16/9, 15/8],
-  'pythag': [1, 256/243, 9/8, 32/27, 81/64, 4/3, 1024/729, 3/2, 121/81, 27/16, 16/9, 243/128],
-  'lim5': [1, 16/15, 9/8, 6/5, 5/4, 4/3, 64/45, 3/2, 8/5, 5/3, 16/9, 15/8],
-  'lim7': [1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2, 8/5, 5/3, 16/9, 15/8],
-  'mt_1/4': [],
-  'mt_1/3': [],
-  'mt_2/7': [],
-  'mt_1/5': [],
-}
-const mt_1_4gen = decimal(cents(3/2) - cents(81/80) / 4);
-const mt_1_3gen = decimal(cents(3/2) - cents(81/80) / 3);
-const mt_2_7gen = decimal(cents(3/2) - cents(81/80) * 2/7);
-const mt_1_5gen = decimal(cents(3/2) - cents(81/80) / 5);
-for (let i = -6; i < 6; i++) {
-  tunings['mt_1/4'].push(norm(Math.pow(mt_1_4gen, i)));
-  tunings['mt_1/3'].push(norm(Math.pow(mt_1_3gen, i)));
-  tunings['mt_2/7'].push(norm(Math.pow(mt_2_7gen, i)));
-  tunings['mt_1/5'].push(norm(Math.pow(mt_1_5gen, i)));
-}
-tunings['mt_1/4'].sort();
-tunings['mt_1/3'].sort();
-tunings['mt_2/7'].sort();
-tunings['mt_1/5'].sort();
-
-
-function getAudio(ops) {
-  const audio = []
-  ops = {
-    playtime: parseFloat(ops.playtime),
-    fundamental: parseFloat(ops.fundamental),
-    scale: tunings[ops.system],
-    shape: ops.shape,
-    root: parseInt(ops.root),
-    rootBNS: parseInt(ops.rootBNS),
-    triad: JSON.parse(ops.triad),
-    seventh: parseInt(ops.seventh),
-    ninth: parseInt(ops.ninth),
-    eleventh: parseInt(ops.eleventh),
-    thirteenth: parseInt(ops.thirteenth),
-  }
-
-  let root = ops.root + ops.rootBNS
-  let third = ops.triad[0]
-  let fifth = ops.triad[1]
-  audio.push(ops.fundamental * ops.scale[root])
-  audio.push(ops.fundamental * ops.scale[root + third])
-  audio.push(ops.fundamental * ops.scale[root + fifth])
-
-  if (!isNaN(ops.seventh))
-    audio.push(ops.fundamental * ops.scale[root + ops.seventh])
-  if (!isNaN(ops.ninth))
-    audio.push(ops.fundamental * 2 * ops.scale[root + ops.ninth])
-  if (!isNaN(ops.eleventh))
-    audio.push(ops.fundamental * 2 * ops.scale[root + ops.eleventh])
-  if (!isNaN(ops.thirteenth))
-    audio.push(ops.fundamental * 2 * ops.scale[root + ops.thirteenth])
-
-  return audio
-}
-
 function getChordName(ops) {
   let name = '';
   switch (ops.rootBNS) {
@@ -225,6 +163,75 @@ function getChordName(ops) {
   return name;
 }
 
+const tunings = {
+  'tet12': new Array(12).fill(1).map((elt,i) => Math.pow(2,i/12)),
+  'just': [1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2, 8/5, 5/3, 16/9, 15/8],
+  'pythag': [1, 256/243, 9/8, 32/27, 81/64, 4/3, 1024/729, 3/2, 121/81, 27/16, 16/9, 243/128],
+  'lim5': [1, 16/15, 9/8, 6/5, 5/4, 4/3, 64/45, 3/2, 8/5, 5/3, 16/9, 15/8],
+  'lim7': [1, 16/15, 9/8, 6/5, 5/4, 4/3, 7/5, 3/2, 8/5, 5/3, 16/9, 15/8],
+  'mt_1/4': [],
+  'mt_1/3': [],
+  'mt_2/7': [],
+  'mt_1/5': [],
+}
+const mt_1_4gen = decimal(cents(3/2) - cents(81/80) / 4);
+const mt_1_3gen = decimal(cents(3/2) - cents(81/80) / 3);
+const mt_2_7gen = decimal(cents(3/2) - cents(81/80) * 2/7);
+const mt_1_5gen = decimal(cents(3/2) - cents(81/80) / 5);
+for (let i = -6; i < 6; i++) {
+  tunings['mt_1/4'].push(norm(Math.pow(mt_1_4gen, i)));
+  tunings['mt_1/3'].push(norm(Math.pow(mt_1_3gen, i)));
+  tunings['mt_2/7'].push(norm(Math.pow(mt_2_7gen, i)));
+  tunings['mt_1/5'].push(norm(Math.pow(mt_1_5gen, i)));
+}
+tunings['mt_1/4'].sort();
+tunings['mt_1/3'].sort();
+tunings['mt_2/7'].sort();
+tunings['mt_1/5'].sort();
+
+
+
+function getAudio(ops) {
+  const audio = []
+  ops = {
+    fundamental: parseFloat(ops.fundamental),
+    scale: tunings[ops.system],
+    root: parseInt(ops.root),
+    rootBNS: parseInt(ops.rootBNS),
+    triad: JSON.parse(ops.triad),
+    seventh: parseInt(ops.seventh),
+    ninth: parseInt(ops.ninth),
+    eleventh: parseInt(ops.eleventh),
+    thirteenth: parseInt(ops.thirteenth),
+  }
+
+  function intrvl(y) {
+    function norm12(x) {
+      while (x > 11) x -= 12;
+      while (x < 0) x += 12;
+      return x;
+    }
+    function oct(x) {
+      if (x > 0) return Math.ceil(x / 11)
+      else return 1 / (1 - Math.floor(x / 11))
+    }
+    audio.push(ops.fundamental * ops.scale[norm12(y)] * oct(y))
+  }
+  const root = ops.root + ops.rootBNS
+  intrvl(root)
+  intrvl(root + ops.triad[0])
+  intrvl(root + ops.triad[1])
+
+  if (!isNaN(ops.seventh)) intrvl(root + ops.seventh)
+  if (!isNaN(ops.ninth)) intrvl(root + ops.ninth)
+  if (!isNaN(ops.eleventh)) intrvl(root + ops.eleventh)
+  if (!isNaN(ops.thirteenth)) intrvl(root + ops.thirteenth)
+
+  return audio
+}
+
+
+
 function getAudioFromTextin(ops) {
   let fundamental = parseFloat(ops.fundamental)
   let audio = [fundamental]
@@ -243,6 +250,7 @@ function getAudioFromTextin(ops) {
 }
 
 function play(audio, playtime, shape) {
+  console.log(audio)
   let AudioContext = window.AudioContext || window.webkitAudioContext;
   const ctx = new AudioContext();
   let buffer = ctx.createBuffer(1, playtime * SAMPLE_RATE, SAMPLE_RATE);

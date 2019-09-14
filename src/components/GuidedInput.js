@@ -45,12 +45,9 @@ class GuidedInput extends Component {
         change={(e) => this.setState({shape: e.target.value})}/>
 
         <Options.Root
-        value={this.state.root}
-        change={(e) => this.setState({root: e.target.value})}/>
-
-        <Options.RootBNS
-        value={this.state.rootBNS}
-        change={(e) => this.setState({rootBNS: e.target.value})}/>
+        value={this.state.root} valueBNS={this.state.rootBNS}
+        change={(e) => this.setState({root: e.target.value})}
+        changeBNS={(e) => this.setState({rootBNS: e.target.value})}/>
 
         <Options.Triad
         value={this.state.triad}
