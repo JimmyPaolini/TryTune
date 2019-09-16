@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Options from './Options.js'
+import {PlayTime, Fundamental, Shape} from './Options';
 import Sound from '../sound.js';
 
 export default class FreeInput extends Component {
@@ -18,15 +18,15 @@ export default class FreeInput extends Component {
     this.audio = Sound.getAudioFromTextin(this.state)
     return (
       <div className='flex-container' id='FreeInput'>
-        <Options.PlayTime
+        <PlayTime
         value={this.state.playtime}
         change={(e) => this.setState({playtime: e.target.value})}/>
 
-        <Options.Fundamental
+        <Fundamental
         value={this.state.fundamental}
         change={(e) => this.setState({fundamental: e.target.value})}/>
 
-        <Options.Shape
+        <Shape
         value={this.state.shape}
         change={(e) => this.setState({shape: e.target.value})}/>
 

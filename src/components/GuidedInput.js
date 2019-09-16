@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Options from './Options.js';
+import {PlayTime, Fundamental, System, Shape, Root,
+Triad, Seventh, Ninth, Eleventh, Thirteenth} from './Options';
 import Sound from '../sound.js';
 
 export default class GuidedInput extends Component {
@@ -28,44 +29,44 @@ export default class GuidedInput extends Component {
     return (
       <div className='flex-container' id='GuidedInput'>
 
-        <Options.PlayTime
+        <PlayTime
         value={this.state.playtime}
         change={(e) => this.setState({playtime: e.target.value})}/>
 
-        <Options.Fundamental
+        <Fundamental
         value={this.state.fundamental}
         change={(e) => this.setState({fundamental: e.target.value})}/>
 
-        <Options.System
+        <System
         value={this.state.system}
         change={(e) => this.setState({system: e.target.value})}/>
 
-        <Options.Shape
+        <Shape
         value={this.state.shape}
         change={(e) => this.setState({shape: e.target.value})}/>
 
-        <Options.Root
+        <Root
         value={this.state.root} valueBNS={this.state.rootBNS}
         change={(e) => this.setState({root: e.target.value})}
         changeBNS={(e) => this.setState({rootBNS: e.target.value})}/>
 
-        <Options.Triad
+        <Triad
         value={this.state.triad}
         change={(e) => this.setState({triad: e.target.value})}/>
 
-        <Options.Seventh
+        <Seventh
         value={this.state.seventh}
         change={(e) => this.setState({seventh: e.target.value})}/>
 
-        <Options.Ninth
+        <Ninth
         value={this.state.ninth}
         change={(e) => this.setState({ninth: e.target.value})}/>
 
-        <Options.Eleventh
+        <Eleventh
         value={this.state.eleventh}
         change={(e) => this.setState({eleventh: e.target.value})}/>
 
-        <Options.Thirteenth
+        <Thirteenth
         value={this.state.thirteenth}
         change={(e) => this.setState({thirteenth: e.target.value})}/>
 

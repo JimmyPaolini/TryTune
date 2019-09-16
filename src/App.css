@@ -6,7 +6,7 @@
 
 :root {
   --small-width: 400px;
-  --nav-height: 46px;
+  --nav-height: 50px;
 }
 
 .flex-container {
@@ -25,7 +25,7 @@
 }
 
 .instructions {
-  width: var(--small-width);
+  max-width: var(--small-width);
   display: flex;
   text-align: center;
 }
@@ -35,13 +35,17 @@
 }
 
 textarea {
-  margin: 5px;
-  font-size: 18px;
+  font-size: 16px;
   height: 100px;
+  max-width: var(--small-width);
   width: var(--small-width);
+  margin: 4px 0px;
+  border-radius: 3px;
+  padding: 3px 5px;
+  outline: none;
 }
 
-button {
+.play {
   background-color: #555;
   border: none;
   color: #fff;
@@ -55,60 +59,78 @@ button {
   outline: none; /* for when it's clicked */
 }
 
-button:hover {
+.play:hover {
   background-color: #333;
 }
 
 /* Navigation Bar */
 
-nav {
+nav { /* navigation bar */
   background-color: #333;
   height: var(--nav-height);
 }
 
-ul {
-  list-style-type: none;
-  overflow: hidden;
-}
-
-li {
+nav > * { /* all items in nav bar */
+  display: inline-block;
   float: left;
-}
-
-li a {
-  display: inline-block;
   color: white;
+  background-color: #333;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
+  padding: 16px;
 }
 
-li a:hover, .dropdown-content a:hover {
-  background-color: #222;
+nav a { /* all links in nav bar and dropdowns */
+  color: white;
+  background-color: #333;
+  text-decoration: none;
+  padding: 16px 16px;
 }
 
-li.dropdown {
-  display: inline-block;
-}
+nav a:hover { background-color: #222; } /* darken links on hover */
+
+div.dropdown { position: relative; }
+
+/* show dropdown-content on hover over dropdown */
+.dropdown:hover .dropdown-content { display: block; }
 
 .dropdown-content {
   display: none;
   position: absolute;
+  top: var(--nav-height);
   background-color: white;
   min-width: 146px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
-.dropdown-content a {
-  color: white;
-  background-color: #333;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: center;
+.dropdown-content a { display: block; }
+
+#hamburger {
+  display: none;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.mobileMenu {
+  display: none;
+}
+
+
+/* mobile */
+@media only screen and (max-width: 600px) {
+
+  nav > * { display: none;}
+
+  nav > #nav-home, nav > #hamburger {
+    display: inline-block;
+  }
+
+  #hamburger {
+    float: right;
+    max-height: var(--nav-height);
+    font-size: 24px;
+    padding: 7px 16px 10px 16px;
+  }
+
+
+
 }

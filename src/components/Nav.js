@@ -1,50 +1,37 @@
 import React from 'react'
 
-function Nav(props) {
+function toggleMobileMenu() {
+  console.log(document)
+  let x = document.getElementById("mobileMenu");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+export default function Nav(props) {
   return (
     <nav>
-      <ul>
-        <li><a href='/'>Trytune</a></li>
-        <li><a href='/guidedinput'>Guided Input</a></li>
-        <li><a href='/freeinput'>Free Input</a></li>
-        <li className='dropdown'>
-        <a className='dropbtn'>Tuning Systems</a>
-          <div className='dropdown-content'>
-            <a href='/tuningsystems/just'>Just</a>
-            <a href='/tuningsystems/limit'>Limit</a>
-            <a href='/tuningsystems/meantone'>Meantone</a>
-          </div>
-        </li>
-      </ul>
+      <a href='/' id='nav-home'>Trytune</a>
+
+      <a href='/guidedinput'>Guided Input</a>
+      <a href='/freeinput'>Free Input</a>
+      <div className='dropdown'>
+        <a href='/tuningsystems'>Tuning Systems</a>
+        <div className='dropdown-content'>
+          <a href='/tuningsystems/just'>Just</a>
+          <a href='/tuningsystems/limit'>Limit</a>
+          <a href='/tuningsystems/meantone'>Meantone</a>
+        </div>
+      </div>
+
+      <a id='hamburger'>&#9776;</a>
+      <div className='mobileMenu'>
+        <a href='/guidedinput'>Guided Input</a>
+        <a href='/freeinput'>Free Input</a>
+        <a href='/tuningsystems'>Tuning Systems</a>
+      </div>
     </nav>
   )
 }
-
-/*<nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a className="navbar-brand" href="/">Trytune</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-  <div className="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul className="navbar-nav">
-      <li className="nav-item">
-        <a className="nav-link" href="/freeinput">Free Input</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="/guidedinput">GuidedInput</a>
-      </li>
-      <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="/tuningsystems" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Tuning Systems
-        </a>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="/tuningsystems/justintonation">Just Intonation</a>
-          <a className="dropdown-item" href="/tuningsystems/limit">Limit</a>
-          <a className="dropdown-item" href="/tuningsystems/meantone">Meantone</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>*/
-
-export default Nav;
