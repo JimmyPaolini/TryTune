@@ -20,9 +20,16 @@
   justify-content: space-around;
 }
 
-.flex-container > * {
-  justify-content: center
+#GuidedInput {
+  min-height: 500px;
+  max-height: 700px;
 }
+#FreeInput {
+  min-height: 422px;
+  max-height: 622px;
+}
+
+.flex-container > * { justify-content: center; }
 
 .instructions {
   max-width: var(--small-width);
@@ -34,15 +41,20 @@
   display: grid;
 }
 
-textarea {
-  font-size: 16px;
+#textarea-div {
   height: 100px;
   max-width: var(--small-width);
-  width: var(--small-width);
-  margin: 4px 0px;
-  border-radius: 3px;
-  padding: 3px 5px;
+  margin: 10px 22px 20px 10px;
+}
+
+textarea {
+  font-size: 16px;
   outline: none;
+  padding: 5px;
+  border-radius: 3px;
+  height: 100%;
+  width: 100%;
+  resize: none;
 }
 
 .play {
@@ -59,78 +71,134 @@ textarea {
   outline: none; /* for when it's clicked */
 }
 
-.play:hover {
-  background-color: #333;
-}
+.play:hover { background-color: #333; }
+
 
 /* Navigation Bar */
 
 nav { /* navigation bar */
   background-color: #333;
-  height: var(--nav-height);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-nav > * { /* all items in nav bar */
-  display: inline-block;
-  float: left;
+nav > * {
+  display: none;
   color: white;
   background-color: #333;
   text-align: center;
   text-decoration: none;
-  padding: 16px;
+  height: var(--nav-height);
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
 }
 
-nav a { /* all links in nav bar and dropdowns */
+nav > *:hover, #mobile-menu:target a:hover { background-color: #222; }
+
+#nav-home {
+  display: flex;
+  font-size: 24px;
+  flex-grow: 5;
+}
+#hamburger {
+  display: flex;
+  font-size: 24px;
+  flex-grow: 1;
+}
+
+#mobile-menu {
+  flex-basis: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  z-index: 2;
+}
+
+#mobile-menu:target {
+  display: flex;
+  --nav-height: 200px;
+}
+
+#mobile-menu:target a {
   color: white;
   background-color: #333;
+  font-size: 24px;
+  text-align: center;
   text-decoration: none;
-  padding: 16px 16px;
+  height: var(--nav-height);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
 }
 
-nav a:hover { background-color: #222; } /* darken links on hover */
+@media only screen and (min-width: 600px) {
 
-div.dropdown { position: relative; }
+  nav { /* navigation bar */
+    background-color: #333;
+    width: 100%;
+    display: flex;
+  }
 
-/* show dropdown-content on hover over dropdown */
-.dropdown:hover .dropdown-content { display: block; }
+  #nav-home {
+    font-size: 16px;
+    flex-grow: 1;
+  }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: var(--nav-height);
-  background-color: white;
-  min-width: 146px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+  nav > *, nav a { /* all items in nav bar */
+    color: white;
+    background-color: #333;
+    text-align: center;
+    text-decoration: none;
+    height: var(--nav-height);
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 
-.dropdown-content a { display: block; }
+  /* darken links on hover */
+  nav a:hover { background-color: #222; }
 
-#hamburger {
-  display: none;
-}
+  /* show dropdown-content on hover over dropdown */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 
-.mobileMenu {
-  display: none;
-}
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    background-color: white;
+    min-width: 181px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
 
-
-/* mobile */
-@media only screen and (max-width: 600px) {
-
-  nav > * { display: none;}
-
-  nav > #nav-home, nav > #hamburger {
-    display: inline-block;
+  .dropdown-content a {
+    display: block;
+    color: white;
+    background-color: #333;
+    text-align: center;
+    padding: auto;
+    text-decoration: none;
+    height: var(--nav-height);
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 
   #hamburger {
-    float: right;
-    max-height: var(--nav-height);
-    font-size: 24px;
-    padding: 7px 16px 10px 16px;
+    display: none;
   }
 
-
+  #mobile-menu {
+    display: none;
+  }
 
 }

@@ -34,10 +34,12 @@ export default class FreeInput extends Component {
           <p className='instructions'>
             Add intervals relative to the fundamental by typing ratios (containing a '/') and/or cents (containing a '.') separated by commas below:
           </p>
-          <textarea
-            defaultValue={this.state.value}
-            onChange={(e) => this.setState({value: e.target.value})} >
-          </textarea>
+          <div id="textarea-div">
+            <textarea
+              defaultValue={this.state.value}
+              onChange={(e) => this.setState({value: e.target.value})} >
+            </textarea>
+          </div>
         </div>
 
         <div>

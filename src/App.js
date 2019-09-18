@@ -14,12 +14,12 @@ function App() {
     <Router className='App'>
       <Nav />
       <Switch>
-        <Route path='/freeinput' component={FreeInput} />
-        <Route path='/guidedinput' component={GuidedInput} />
-        <Route path='/tuningsystems' component={TuningSystems} />
-        <Route path='/tuningsystems/justintonation' component={Dev} />
+        <Route path='/tuningsystems/just' component={Dev} />
         <Route path='/tuningsystems/limit' component={Limit} />
         <Route path='/tuningsystems/meantone' component={Dev} />
+        <Route path='/tuningsystems' component={TuningSystems} />
+        <Route path='/freeinput' component={FreeInput} />
+        <Route path='/guidedinput' component={GuidedInput} />
         <Route path='/' component={Home} />
       </Switch>
     </Router>
