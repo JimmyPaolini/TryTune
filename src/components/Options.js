@@ -2,19 +2,19 @@ import React from 'react'
 
 export function PlayTime(props) {
   return (
-    <div>
-    <span>Play Time (s): </span>
-    <input type="text" name="PlayTime"
-    defaultValue={props.value} onChange={props.change}/>
+    <div className='page__option'>
+      <span>Play Time (s): </span>
+      <input type="text" name="PlayTime"
+      defaultValue={props.value} onChange={props.change}/>
     </div>
   )
 }
 
 export function Fundamental(props) {
   return (
-    <div>
-    <span>Fundamental (Hz): </span>
-    <input type="text" name="Fundamental"
+    <div className='page__option'>
+      <span>Fundamental (Hz): </span>
+      <input type="text" name="Fundamental"
     defaultValue={props.value} onChange={props.change}/>
     </div>
   )
@@ -22,71 +22,71 @@ export function Fundamental(props) {
 
 export function System(props) {
   return (
-    <div>
-    <span>Tuning System: </span>
-    <select defaultValue={props.value} onChange={props.change}>
-      <option value='tet12'>12-Tone Equal Temperment</option>
-      <option value='pythag'>Pythagorean / 3-Limit</option>
-      <option value='lim5'>5-Limit</option>
-      <option value='lim7'>7-Limit</option>
-      <option value='mt_1/4'>1/4-Comma Meantone</option>
-      <option value='mt_1/3'>1/3-Comma Meantone</option>
-      <option value='mt_2/7'>2/7-Comma Meantone</option>
-      <option value='mt_1/5'>1/5-Comma Meantone</option>
-    </select>
+    <div className='page__option'>
+      <span>Tuning System: </span>
+      <select defaultValue={props.value} onChange={props.change}>
+        <option value='tet12'>12-Tone Equal Temperment</option>
+        <option value='pythag'>Pythagorean / 3-Limit</option>
+        <option value='lim5'>5-Limit</option>
+        <option value='lim7'>7-Limit</option>
+        <option value='mt_1/4'>1/4-Comma Meantone</option>
+        <option value='mt_1/3'>1/3-Comma Meantone</option>
+        <option value='mt_2/7'>2/7-Comma Meantone</option>
+        <option value='mt_1/5'>1/5-Comma Meantone</option>
+      </select>
     </div>
   )
 }
 
 export function Shape(props) {
   return (
-    <div>
-    <span>Shape: </span>
-    <select defaultValue={props.value} onChange={props.change}>
-      <option value='sine'>sine</option>
-      <option value='triangle'>triangle</option>
-      <option value='saw'>saw</option>
-      <option value='square'>square</option>
-    </select>
+    <div className='page__option'>
+      <span>Shape: </span>
+      <select defaultValue={props.value} onChange={props.change}>
+        <option value='sine'>sine</option>
+        <option value='triangle'>triangle</option>
+        <option value='saw'>saw</option>
+        <option value='square'>square</option>
+      </select>
     </div>
   )
 }
 
 export function Root(props) {
   return (
-    <div>
-    <span>Root: </span>
-    <select defaultValue={props.value} onChange={props.change}>
-      <option value='0'>I</option>
-      <option value='2'>II</option>
-      <option value='4'>III</option>
-      <option value='5'>IV</option>
-      <option value='7'>V</option>
-      <option value='9'>VI</option>
-      <option value='11'>VII</option>
-    </select>
-    <label>   &#x266d;
-      <input type="radio" value='-1'
-      checked={props.valueBNS === '-1'}
-      onChange={props.changeBNS}/>
-    </label>
-    <label>   &#x266e;
-      <input type="radio" value='0'
-      checked={props.valueBNS === '0'}
-      onChange={props.changeBNS}/>
-    </label>
-    <label>   &#x266f;
-      <input type="radio" value='1'
-      checked={props.valueBNS === '1'}
-      onChange={props.changeBNS}/>
-    </label>
+    <div className='page__option'>
+      <span>Root: </span>
+      <select defaultValue={props.value} onChange={props.change}>
+        <option value='0'>I</option>
+        <option value='2'>II</option>
+        <option value='4'>III</option>
+        <option value='5'>IV</option>
+        <option value='7'>V</option>
+        <option value='9'>VI</option>
+        <option value='11'>VII</option>
+      </select>
+      <label>   &#x266d;
+        <input type="radio" value='-1'
+        checked={props.valueBNS === '-1'}
+        onChange={props.changeBNS}/>
+      </label>
+      <label>   &#x266e;
+        <input type="radio" value='0'
+        checked={props.valueBNS === '0'}
+        onChange={props.changeBNS}/>
+      </label>
+      <label>   &#x266f;
+        <input type="radio" value='1'
+        checked={props.valueBNS === '1'}
+        onChange={props.changeBNS}/>
+      </label>
     </div>
   )
 }
 
 export function Triad(props) {
   return (
-    <div>
+    <div className='page__option'>
       <span>Triad: </span>
       <select defaultValue={props.value} onChange={props.change}>
         <option value='[4,7]'>Major</option>
@@ -103,7 +103,7 @@ export function Triad(props) {
 
 export function Seventh(props) {
   return (
-    <div>
+    <div className='page__option'>
       <span>Seventh: </span>
       <label>   none
         <input type='radio' value='none'
@@ -131,7 +131,7 @@ export function Seventh(props) {
 
 export function Ninth(props) {
   return (
-    <div>
+    <div className='page__option'>
       <span>Ninth: </span>
       <label>   none
         <input type='radio' value='none'
@@ -159,7 +159,7 @@ export function Ninth(props) {
 
 export function Eleventh(props) {
   return (
-    <div>
+    <div className='page__option'>
       Eleventh:
       <label>   none
         <input type='radio' value='none'
@@ -182,7 +182,7 @@ export function Eleventh(props) {
 
 export function Thirteenth(props) {
   return (
-    <div>
+    <div className='page__option'>
       Thirteenth:
       <label>   none
         <input type='radio' value='none'

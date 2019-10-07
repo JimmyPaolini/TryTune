@@ -1,0 +1,95 @@
+*
+  margin: 0px
+  padding: 0px
+  font-family: 'Helvetica'
+
+$small-width: 400px
+$nav-height: 50px
+$transition-time: 200ms
+$color-inactive: #333
+$color-active: #222
+
+@mixin hover-darken
+  transition: background-color $transition-time
+  &:hover
+    background-color: #222
+    cursor: pointer
+
+@keyframes appear
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@mixin default
+  display: flex
+  color: white
+  background-color: #333
+  text-align: center
+  text-decoration: none
+  height: $nav-height
+  justify-content: space-around
+  align-items: center
+  position: relative
+  @include hover-darken
+
+.page
+  position: absolute
+  top: $nav-height
+  bottom: 0
+  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-around
+  > *
+    justify-content: center
+
+.page__guided-input
+  min-height: 500px
+  max-height: 700px
+.page__free-input
+  min-height: 422px
+  max-height: 622px
+
+.page__instructions
+  max-width: $small-width
+  display: flex
+  text-align: center
+
+.page__option
+  text-align: center
+
+.page__textarea
+  height: 100px
+  box-sizing: border-box
+  width: calc(100% - 20px)
+  max-width: $small-width
+  margin: 10px
+  font-size: 16px
+  outline: none
+  padding: 5px
+  border-radius: 3px
+  resize: none
+
+.page__play-btn
+  background-color: #555
+  border: none
+  color: #fff
+  padding: 10px 20px
+  text-align: center
+  text-decoration: none
+  display: inline-block
+  font-size: 16px
+  margin: 4px 2px
+  border-radius: 5px
+  outline: none
+  @include hover-darken
+
+.page__tuning-systems--system
+  @include default
+.page__tuning-systems
+  width: 25%
+
+@import 'components/Limit5'
+@import 'components/Nav'

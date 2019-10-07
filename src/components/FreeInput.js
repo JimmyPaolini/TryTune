@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {PlayTime, Fundamental, Shape} from './Options';
-import Sound from '../sound.js';
+import { getAudioFromTextin, play} from '../sound.js';
 
 export default class FreeInput extends Component {
   constructor(props) {
@@ -9,15 +9,15 @@ export default class FreeInput extends Component {
       playtime: '3',
       fundamental: '440',
       shape: 'sine',
-      value: ''
+      textin: ''
     }
-    this.audio = Sound.getAudioFromTextin(this.state)
+    this.audio = getAudioFromTextin(this.state)
   }
 
   render() {
-    this.audio = Sound.getAudioFromTextin(this.state)
+    this.audio = getAudioFromTextin(this.state)
     return (
-      <div className='flex-container' id='FreeInput'>
+      <div className='page page__free-input'>
         <PlayTime
         value={this.state.playtime}
         change={(e) => this.setState({playtime: e.target.value})}/>
@@ -31,19 +31,19 @@ export default class FreeInput extends Component {
         change={(e) => this.setState({shape: e.target.value})}/>
 
         <div>
-          <p className='instructions'>
+          <p className='page__instructions'>
             Add intervals relative to the fundamental by typing ratios (containing a '/') and/or cents (containing a '.') separated by commas below:
           </p>
-          <div id="textarea-div">
-            <textarea
-              defaultValue={this.state.value}
-              onChange={(e) => this.setState({value: e.target.value})} >
+          <div>
+            <textarea className='page__textarea'
+              defaultValue={this.state.textin}
+              onChange={(e) => this.setState({textin: e.target.value})} >
             </textarea>
           </div>
         </div>
 
         <div>
-          <button className='play' onClick={() => Sound.play(this.audio, this.state.playtime, this.state.shape)}>&#9658;</button>
+          <button className='page__play-btn' onClick={() => play(this.audio, this.state.playtime, this.state.shape)}>&#9658;</button>
         </div>
       </div>
     )

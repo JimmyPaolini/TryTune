@@ -44,7 +44,7 @@ function decimal(x) {
   return Math.pow(2, x / 1200);
 }
 
-function getChordName(ops) {
+export function getChordName(ops) {
   let name = '';
   switch (ops.rootBNS) {
     case '-1':
@@ -191,7 +191,7 @@ tunings['mt_1/5'].sort();
 
 
 
-function getAudio(ops) {
+export function getAudio(ops) {
   const audio = []
   ops = {
     fundamental: parseFloat(ops.fundamental),
@@ -232,10 +232,10 @@ function getAudio(ops) {
 
 
 
-function getAudioFromTextin(ops) {
+export function getAudioFromTextin(ops) {
   let fundamental = parseFloat(ops.fundamental)
   let audio = [fundamental]
-  ops.value.split(', ').forEach(function(interval) {
+  ops.textin.split(', ').forEach(function(interval) {
     if (interval.includes('/') && !interval.includes('.')) {
       let num_dem = interval.split('/');
       let numerator = parseInt(num_dem[0]);
@@ -249,31 +249,22 @@ function getAudioFromTextin(ops) {
   return audio;
 }
 
-function play(audio, playtime, shape) {
-  console.log(audio)
-  let AudioContext = window.AudioContext || window.webkitAudioContext;
-  const ctx = new AudioContext();
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const ctx = new AudioContext();
+
+export function play(audio, playtime, shape) {
+  console.log(audio, playtime, shape)
   let buffer = ctx.createBuffer(1, playtime * SAMPLE_RATE, SAMPLE_RATE);
   let bufferSetter = buffer.getChannelData(0);
   var generator = typeof shape == 'function' ? shape : shapes[shape];
 
-  for (let t = 0; t < playtime * SAMPLE_RATE; t++) {
+  for (let t = 0; t < playtime * SAMPLE_RATE; t++)
     audio.forEach(function(freq) {
-      bufferSetter[t] += generator(t, freq)
+      bufferSetter[t] += generator(t, freq) / audio.length
     })
-  }
 
   let source = ctx.createBufferSource();
   source.buffer = buffer;
   source.connect(ctx.destination);
   source.start();
 }
-
-const Sound = {
-  getAudio,
-  getAudioFromTextin,
-  getChordName,
-  play
-}
-
-export default Sound;

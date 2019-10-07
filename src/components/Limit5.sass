@@ -1,0 +1,29 @@
+@use 'App'
+
+.page__5-limit
+  display: grid
+  width: 50%
+  height: 50%
+  background-color: $color-inactive
+  border: 1px solid black
+  grid-template-columns: repeat(6, 1fr)
+  grid-template-rows: repeat(6, 1fr)
+  grid-template-areas: '. number number number number number' 'number button button button button button' 'number button button button button button' 'number button button button button button' 'number button button button button button' 'number button button button button button'
+  > *
+    align-self: center
+    justify-self: center
+    color: white
+    display: inline-block
+    text-align: center
+    top: 50%
+
+.page__5-limit--empty
+  border: none
+
+.page__5-limit--button
+  @include hover-darken
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: center
+  align-items: center

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {PlayTime, Fundamental, System, Shape, Root,
 Triad, Seventh, Ninth, Eleventh, Thirteenth} from './Options';
-import Sound from '../sound.js';
+import { getAudio, getChordName, play } from '../sound.js';
 
 export default class GuidedInput extends Component {
   constructor(props) {
@@ -19,15 +19,15 @@ export default class GuidedInput extends Component {
       eleventh: 'none',
       thirteenth: 'none',
     }
-    this.audio = Sound.getAudio(this.state)
-    this.chordName = 'I'
+    this.audio = getAudio(this.state)
+    this.chordName = getChordName(this.state)
   }
 
   render() {
-    this.audio = Sound.getAudio(this.state)
-    this.chordName = Sound.getChordName(this.state)
+    this.audio = getAudio(this.state)
+    this.chordName = getChordName(this.state)
     return (
-      <div className='flex-container' id='GuidedInput'>
+      <div className='page page__guided-input'>
 
         <PlayTime
         value={this.state.playtime}
@@ -75,7 +75,7 @@ export default class GuidedInput extends Component {
         </div>
 
         <div>
-          <button className='play' onClick={() => Sound.play(this.audio, this.state.playtime, this.state.shape)}>&#9658;</button>
+          <button className='page__play-btn' onClick={() => play(this.audio, this.state.playtime, this.state.shape)}>&#9658;</button>
         </div>
 
       </div>
